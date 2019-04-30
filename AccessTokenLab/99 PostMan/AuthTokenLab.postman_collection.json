@@ -1,0 +1,81 @@
+{
+	"info": {
+		"name": "AuthTokenLab",
+		"_postman_id": "dc2e4d4d-351d-6125-866e-e10df53be41f",
+		"description": "Web API 使用者身分驗證練習",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "需要提供存取權杖 Access Token 才能使用的 API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:54891/api/needAuth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "54891",
+					"path": [
+						"api",
+						"needAuth"
+					]
+				},
+				"description": "需要提供存取權杖 Access Token 才能使用的 API"
+			},
+			"response": []
+		},
+		{
+			"name": "不需要提供存取權杖 Access Token 就能使用的 API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:54891/api/NoAuth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "54891",
+					"path": [
+						"api",
+						"NoAuth"
+					]
+				},
+				"description": "不需要提供存取權杖 Access Token 就能使用的 API"
+			},
+			"response": []
+		},
+		{
+			"name": "使用 Authorization: Basic 標題來進行帳號與密碼驗證",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dnVsY2FuOjEyM2FiYw=="
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:54891/api/Login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "54891",
+					"path": [
+						"api",
+						"Login"
+					]
+				},
+				"description": "使用 Authorization: Basic 標題來進行帳號與密碼驗證"
+			},
+			"response": []
+		}
+	]
+}

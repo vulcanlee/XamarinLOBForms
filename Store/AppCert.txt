@@ -1,0 +1,13 @@
+I submitted the app certification is over three days, have not received the certification results notice.
+
+Can you help me to find out what the problem is?
+
+Following is the app url of my dashboard
+
+https://developer.microsoft.com/zh-tw/dashboard/apps/9PNTPV8TJQKR/
+
+My PFN and SID as following
+
+PFN	VulcanLab.3883416B49494_3s5xa029k6kdt
+
+SID	S-1-15-2-2423622550-1742735518-379444970-1618460772-3979530280-3270290396-2485960247

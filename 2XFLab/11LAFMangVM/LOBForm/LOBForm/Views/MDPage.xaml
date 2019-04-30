@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="LOBForm.Views.MDPage"
+             MasterBehavior="Popover">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+
+            <ContentPage.Icon>
+                <!--因為每個平台的圖片路徑不同，所以，需要使用 OnPlatform 來指定不同平台的圖片名稱-->
+                <!--每個屬性的 x:TypeArguments 引用型別皆不同，這裡請參考這個連結
+                https://developer.xamarin.com/api/type/Xamarin.Forms.Page/-->
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Default="hamburger.png"
+                            WinPhone="Assets/Images/hamburger.png" />
+            </ContentPage.Icon>
+
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--這裡宣告最上方的使用者登入資訊與公司名稱的樣貌-->
+                <Grid
+                    RowSpacing="0" ColumnSpacing="0">
+                    <BoxView
+                        Color="#FCB515"/>
+                    <Label
+                        Text="{Binding UserName, StringFormat='使用者名稱：{0}'}"
+                        TextColor="White"
+                        Opacity="0.5"
+                        FontSize="Medium"
+                        Margin="10,20,0,0"
+                        HorizontalOptions="Start" VerticalOptions="Start"
+                        />
+                    <Label
+                        Text="Xamarin 實驗室"
+                        TextColor="Yellow"
+                        Opacity="0.8"
+                        FontSize="Large"
+                        Margin="10,0,0,20"
+                        HorizontalOptions="Start" VerticalOptions="End"
+                        />
+                </Grid>
+
+                <!--這裡使用捲動面板配置，宣告各種可以使用的功能-->
+                <Grid
+                    Grid.Row="1"
+                    RowSpacing="0" ColumnSpacing="0"
+                    BackgroundColor="#edd193"
+                    HorizontalOptions="Fill" VerticalOptions="FillAndExpand"
+                    >
+                    <ScrollView
+                        Orientation="Vertical"
+                        >
+                        <StackLayout
+                            Margin="10,20"
+                            Spacing="0"
+                            Orientation="Vertical">
+
+                            <Label
+                                Margin="20,20"
+                                HorizontalOptions="Start" VerticalOptions="Center"
+                                Text="工作日誌"
+                                FontSize="24"
+                                TextColor="Black"
+                                Opacity="0.7">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding MenuCommand}"
+                                        CommandParameter="工作日誌"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label
+                                Margin="20,20"
+                                HorizontalOptions="Start" VerticalOptions="Center"
+                                Text="請假單"
+                                FontSize="24"
+                                TextColor="Black"
+                                Opacity="0.7">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding MenuCommand}"
+                                        CommandParameter="請假單"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label
+                                Margin="20,20"
+                                HorizontalOptions="Start" VerticalOptions="Center"
+                                Text="請假單審核"
+                                FontSize="24"
+                                TextColor="Black"
+                                Opacity="0.7"
+                                IsVisible="{Binding IsManager}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding MenuCommand}"
+                                        CommandParameter="請假單審核"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label
+                                Margin="20,20"
+                                HorizontalOptions="Start" VerticalOptions="Center"
+                                Text="緊急電話清單"
+                                FontSize="24"
+                                TextColor="Black"
+                                Opacity="0.7">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding MenuCommand}"
+                                        CommandParameter="緊急電話清單"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label
+                                Margin="20,20"
+                                HorizontalOptions="Start" VerticalOptions="Center"
+                                Text="關  於"
+                                FontSize="24"
+                                TextColor="Black"
+                                Opacity="0.7">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding MenuCommand}"
+                                        CommandParameter="關  於"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label
+                                Margin="20,20"
+                                HorizontalOptions="Start" VerticalOptions="Center"
+                                Text="登  出"
+                                FontSize="24"
+                                TextColor="Black"
+                                Opacity="0.7">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding MenuCommand}"
+                                        CommandParameter="登  出"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+</MasterDetailPage>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthToken", "AuthToken\AuthToken.csproj", "{5C63D01F-8841-4CA2-AFE3-D7347BCF57CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetAccessToken", "GetAccessToken\GetAccessToken.csproj", "{ECCEA64D-AA55-4314-A4D8-5198EF4A1EBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C63D01F-8841-4CA2-AFE3-D7347BCF57CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C63D01F-8841-4CA2-AFE3-D7347BCF57CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C63D01F-8841-4CA2-AFE3-D7347BCF57CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C63D01F-8841-4CA2-AFE3-D7347BCF57CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECCEA64D-AA55-4314-A4D8-5198EF4A1EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECCEA64D-AA55-4314-A4D8-5198EF4A1EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECCEA64D-AA55-4314-A4D8-5198EF4A1EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECCEA64D-AA55-4314-A4D8-5198EF4A1EBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78B09B24-CD53-4531-BE38-6110D2278829}
+	EndGlobalSection
+EndGlobal

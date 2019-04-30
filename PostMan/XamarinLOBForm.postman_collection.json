@@ -1,0 +1,1705 @@
+{
+	"info": {
+		"name": "XamarinLOBForm",
+		"_postman_id": "c5765af2-45d7-49c5-7b84-90d946eda391",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "本機",
+			"description": "",
+			"item": [
+				{
+					"name": "請假單",
+					"description": "",
+					"item": [
+						{
+							"name": "本機查詢請假單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/LeaveAppForm",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"LeaveAppForm"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢特定主管要審核的所有請假單紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"manager0\",\n    \"mode\": \"manager\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/LeaveAppFormByUser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"LeaveAppFormByUser"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢特定主管要審核的所有請假單紀錄(有JwtAuth的存取權杖檢查)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyMSIsImV4cCI6MTUxNzM4MzMzMi4wLCJyb2xlIjpbXSwibWFuYWdlciI6ZmFsc2V9.7QRjrobykaO2LBoOPI4YQbARESzYPFEKFfEZV8DvVSY"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"manager0\",\n    \"mode\": \"manager\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/LeaveAppFormByUserJwtAuth",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"LeaveAppFormByUserJwtAuth"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢特定使用者的所有請假單紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"user1\",\n    \"mode\": \"user\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/LeaveAppFormByUser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"LeaveAppFormByUser"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機修改特定使用者的假單紀錄",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "        {\n            \"owner\": {\n                \"myUserId\": 2,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"leaveAppFormId\": 302,\n            \"formDate\": \"2018-01-30T01:33:50.98Z\",\n            \"category\": \"-=-=-=-=-=-=-=-=-=-=\",\n            \"beginDate\": \"2018-01-30T01:33:50.98Z\",\n            \"completeDate\": \"2018-01-30T01:33:50.98Z\",\n            \"hours\": 0,\n            \"agentName\": \"Vulcan\",\n            \"leaveCause\": \"@@@@@@@@@@@@@@@\",\n            \"formsStatus\": \"已經送出\",\n            \"approveResult\": \"尚未審核\"\n        }\n"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/LeaveAppForm",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"LeaveAppForm"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機新增特定使用者的假單紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"owner\": {\n                \"myUserId\": 1544,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1543,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"leaveAppFormId\": 612,\n            \"formDate\": \"2018-01-30T09:33:50.98Z\",\n            \"category\": \"XX\",\n            \"beginDate\": \"2018-01-30T09:33:50.98Z\",\n            \"completeDate\": \"2018-01-30T09:33:50.98Z\",\n            \"totalHours\": \"08:00:00\",\n            \"agentName\": \"Vulcan\",\n            \"leaveCause\": \"??\",\n            \"formsStatus\": \"@@\",\n            \"approveResult\": \"Wait\"\n        }"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/LeaveAppForm",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"LeaveAppForm"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機刪除特定使用者的假單紀錄",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"owner\": {\n                \"myUserId\": 1544,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1543,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"leaveAppFormId\": 613,\n            \"formDate\": \"2018-01-29T17:33:50.98Z\",\n            \"category\": \"XX\",\n            \"beginDate\": \"2018-01-29T17:33:50.98Z\",\n            \"completeDate\": \"2018-01-29T17:33:50.98Z\",\n            \"totalHours\": \"08:00:00\",\n            \"agentName\": \"Vulcan\",\n            \"leaveCause\": \"??\",\n            \"formsStatus\": \"已經送出\",\n            \"approveResult\": \"尚未審核~~~~~~~~\"\n        }"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/LeaveAppForm/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"LeaveAppForm",
+										"3"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機請假單查詢特定一筆紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/LeaveAppForm?id=7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"LeaveAppForm"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "7",
+											"equals": true
+										}
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "系統管理使用",
+					"description": "",
+					"item": [
+						{
+							"name": "本機測試內建的Todo工作資料表 API",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/tables/todoitem",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"tables",
+										"todoitem"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機資料庫清空與進行初始化",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/dbreset",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"dbreset"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "其他",
+					"description": "",
+					"item": [
+						{
+							"name": "本機專案清單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/Project",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"Project"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機請假類別清單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/LeaveCategory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"LeaveCategory"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機On-Call清單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/OnCallPhone",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"OnCallPhone"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機使用者部門",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/Department",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"Department"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢使用者請假代理人",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"DepartmentName\": \"\",\n    \"Name\": \"\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/QueryAgent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"QueryAgent"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "使用者",
+					"description": "",
+					"item": [
+						{
+							"name": "本機使用者認證 Authorization (一般使用者)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic dXNlcjE6cHdkMQ=="
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/Login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機使用者認證 Authorization (管理者)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic bWFuYWdlcjE6cHdkMQ=="
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/Login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機使用者認證 Post (一般使用者)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"user1\",\n    \"password\": \"pwd1\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/Login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機使用者認證 Post (管理者)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"manager1\",\n    \"password\": \"pwd1\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/Login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "工作日誌",
+					"description": "",
+					"item": [
+						{
+							"name": "本機查詢工作日誌所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/WorkingLog",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"WorkingLog"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢特定使用者的所有工作日誌紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/WorkingLog/ByUserID?userID=user1&mode=user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"WorkingLog",
+										"ByUserID"
+									],
+									"query": [
+										{
+											"key": "userID",
+											"value": "user1",
+											"equals": true
+										},
+										{
+											"key": "mode",
+											"value": "user",
+											"equals": true
+										}
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢特定工作日誌紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:50266/api/WorkingLog/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"WorkingLog",
+										"7"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機刪除特定使用者的工作日誌紀錄",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"project\": {\n                \"projectId\": 391,\n                \"projectName\": \"專案0\"\n            },\n            \"workingLogId\": 301,\n            \"owner\": {\n                \"myUserId\": 1544,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1543,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"logDate\": \"2018-01-30T01:33:27.187Z\",\n            \"totalHours\": \"03:00:00\",\n            \"title\": \"與客戶開會XXXX\",\n            \"summary\": \"討論上線相關準備工作XXXX\"\n        }"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/WorkingLog/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"WorkingLog",
+										"3"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機修改特定使用者的工作日誌紀錄",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "        {\n            \"project\": {\n                \"projectId\": 1,\n                \"projectName\": \"專案0\"\n            },\n            \"workingLogId\": 301,\n            \"owner\": {\n                \"myUserId\": 2,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"logDate\": \"2018-01-30T01:33:27.187Z\",\n            \"hours\": 0,\n            \"title\": \"-=-=-=-=與客戶開會@@@@@@@\",\n            \"summary\": \"-=-=-=-=討論上線相關準備工作@@@@@@\"\n        }\n"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/WorkingLog",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"WorkingLog"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "本機新增特定使用者的工作日誌紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"project\": {\n                \"projectId\": 391,\n                \"projectName\": \"專案0\"\n            },\n            \"owner\": {\n                \"myUserId\": 1544,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1543,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"logDate\": \"2018-01-30T09:33:27.187Z\",\n            \"totalHours\": \"03:00:00\",\n            \"title\": \"與客戶開會XXXX\",\n            \"summary\": \"討論上線相關準備工作XXXX\"\n        }"
+								},
+								"url": {
+									"raw": "http://localhost:50266/api/WorkingLog",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50266",
+									"path": [
+										"api",
+										"WorkingLog"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Azure 雲端",
+			"description": "",
+			"item": [
+				{
+					"name": "請假單",
+					"description": "",
+					"item": [
+						{
+							"name": "Azure查詢請假單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/LeaveAppForm",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"LeaveAppForm"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure查詢特定主管要審核的所有請假單紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"manager1\",\n    \"mode\": \"manager\"\n  }"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/LeaveAppFormByUser",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"LeaveAppFormByUser"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure查詢特定主管要審核的所有請假單紀錄(有JwtAuth的存取權杖檢查)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyMSIsImV4cCI6MTUxNzM4MzMzMi4wLCJyb2xlIjpbXSwibWFuYWdlciI6ZmFsc2V9.7QRjrobykaO2LBoOPI4YQbARESzYPFEKFfEZV8DvVSY"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"manager0\",\n    \"mode\": \"manager\"\n  }"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/LeaveAppFormByUserJwtAuth",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"LeaveAppFormByUserJwtAuth"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure查詢特定使用者的所有請假單紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"user1\",\n    \"mode\": \"user\"\n  }"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/LeaveAppFormByUser",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"LeaveAppFormByUser"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure修改特定使用者的假單紀錄",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"owner\": {\n                \"myUserId\": 2,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"leaveAppFormId\": 301,\n            \"formDate\": \"2018-01-30T14:15:12.817Z\",\n            \"category\": \"XX\",\n            \"beginDate\": \"2018-01-30T14:15:12.817Z\",\n            \"completeDate\": \"2018-01-30T14:15:12.817Z\",\n            \"totalHours\": \"08:00:00\",\n            \"agentName\": \"Vulcan\",\n            \"leaveCause\": \"??\",\n            \"formsStatus\": \"@@@@@@@@@@@@@@@@@@\",\n            \"approveResult\": \"Wait\"\n        }"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/LeaveAppForm",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"LeaveAppForm"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure新增特定使用者的假單紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"owner\": {\n                \"myUserId\": 2,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"leaveAppFormId\": 301,\n            \"formDate\": \"2018-01-30T14:15:12.817Z\",\n            \"category\": \"XX\",\n            \"beginDate\": \"2018-01-30T14:15:12.817Z\",\n            \"completeDate\": \"2018-01-30T14:15:12.817Z\",\n            \"totalHours\": \"08:00:00\",\n            \"agentName\": \"Vulcan\",\n            \"leaveCause\": \"---------??\",\n            \"formsStatus\": \"--------------@@\",\n            \"approveResult\": \"Wait\"\n        }"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/LeaveAppForm",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"LeaveAppForm"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure刪除特定使用者的假單紀錄",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"owner\": {\n                \"myUserId\": 2,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"leaveAppFormId\": 302,\n            \"formDate\": \"2018-01-30T14:15:12.817Z\",\n            \"category\": \"XX\",\n            \"beginDate\": \"2018-01-30T14:15:12.817Z\",\n            \"completeDate\": \"2018-01-30T14:15:12.817Z\",\n            \"totalHours\": \"08:00:00\",\n            \"agentName\": \"Vulcan\",\n            \"leaveCause\": \"---------??\",\n            \"formsStatus\": \"已經送出\",\n            \"approveResult\": \"尚未審核\"\n        }"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/LeaveAppForm/3",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"LeaveAppForm",
+										"3"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure請假單查詢特定一筆紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/LeaveAppForm?id=7",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"LeaveAppForm"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "7",
+											"equals": true
+										}
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "系統管理使用",
+					"description": "",
+					"item": [
+						{
+							"name": "Azure測試內建的Todo工作資料表 API",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/tables/todoitem",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"tables",
+										"todoitem"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure資料庫清空與進行初始化",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/dbreset",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"dbreset"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "其他",
+					"description": "",
+					"item": [
+						{
+							"name": "Azure專案清單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/Project",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Project"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure請假類別清單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/LeaveCategory",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"LeaveCategory"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure On-Call清單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/OnCallPhone",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"OnCallPhone"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure 使用者部門",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/Department",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Department"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure 查詢使用者請假代理人",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"DepartmentName\": \"部門3\",\n    \"Name\": \"\"\n}"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/QueryAgent",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"QueryAgent"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "使用者",
+					"description": "",
+					"item": [
+						{
+							"name": "Azure使用者認證 Authorization (一般使用者)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic dXNlcjE6cHdkMQ=="
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/Login",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure使用者認證 Authorization (管理者)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic bWFuYWdlcjE6cHdkMQ=="
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/Login",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure使用者認證 Post (一般使用者)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"user1\",\n    \"password\": \"pwd1\"\n  }"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/Login",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure使用者認證 Post (管理者)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"manager1\",\n    \"password\": \"pwd1\"\n  }"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/Login",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "工作日誌",
+					"description": "",
+					"item": [
+						{
+							"name": "Azure查詢工作日誌所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/WorkingLog",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"WorkingLog"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure查詢特定使用者的所有工作日誌紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/WorkingLog/ByUserID?userID=user1&mode=user",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"WorkingLog",
+										"ByUserID"
+									],
+									"query": [
+										{
+											"key": "userID",
+											"value": "user1",
+											"equals": true
+										},
+										{
+											"key": "mode",
+											"value": "user",
+											"equals": true
+										}
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure查詢特定工作日誌紀錄",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/WorkingLog/7",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"WorkingLog",
+										"7"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure刪除特定使用者的工作日誌紀錄",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"project\": {\n                \"projectId\": 391,\n                \"projectName\": \"專案0\"\n            },\n            \"workingLogId\": 301,\n            \"owner\": {\n                \"myUserId\": 1544,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1543,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"logDate\": \"2018-01-30T01:33:27.187Z\",\n            \"totalHours\": \"03:00:00\",\n            \"title\": \"與客戶開會XXXX\",\n            \"summary\": \"討論上線相關準備工作XXXX\"\n        }"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/WorkingLog/3",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"WorkingLog",
+										"3"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure修改特定使用者的工作日誌紀錄",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"project\": {\n                \"projectId\": 391,\n                \"projectName\": \"專案0\"\n            },\n            \"workingLogId\": 301,\n            \"owner\": {\n                \"myUserId\": 1544,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1543,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"logDate\": \"2018-01-30T01:33:27.187Z\",\n            \"totalHours\": \"03:00:00\",\n            \"title\": \"與客戶開會@@@\",\n            \"summary\": \"討論上線相關準備工作@@@@@\"\n        }"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/WorkingLog",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"WorkingLog"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Azure新增特定使用者的工作日誌紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ZUMO-API-VERSION",
+										"value": "2.0.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"project\": {\n                \"projectId\": 391,\n                \"projectName\": \"專案0\"\n            },\n            \"owner\": {\n                \"myUserId\": 1544,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1543,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"logDate\": \"2018-01-30T09:33:27.187Z\",\n            \"totalHours\": \"03:00:00\",\n            \"title\": \"與客戶開會XXXX\",\n            \"summary\": \"討論上線相關準備工作XXXX\"\n        }"
+								},
+								"url": {
+									"raw": "http://xamarinlobform.azurewebsites.net/api/WorkingLog",
+									"protocol": "http",
+									"host": [
+										"xamarinlobform",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"WorkingLog"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}

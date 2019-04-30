@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="LOBForm.Views.LeaveAppFormDetailPage"
+             Title="請假單編輯"
+             >
+
+    <Grid
+        RowSpacing="0" ColumnSpacing="0"
+        >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="55"/>
+        </Grid.RowDefinitions>
+
+        <ScrollView
+            Grid.Row="0"
+            Margin="10"
+           Orientation="Vertical"
+            >
+            <StackLayout
+                Spacing="0"
+                Orientation="Vertical"
+                >
+                <Label
+                    Text="假別"
+                    />
+                <Picker
+                    ItemsSource="{Binding LeaveCategoriesSource}"
+                    SelectedItem="{Binding LeaveCategorySelectedItem}"
+                    />
+                <Label
+                    Text="開始日期"
+                    />
+                <DatePicker
+                    Format="yyyy-MM-dd"
+                    Date="{Binding LeaveAppFormItem.BeginDate, StringFormat='{0:yyyy-MM-dd}'}"
+                    />
+                <Label
+                    Text="開始時間"
+                    />
+                <TimePicker
+                    Time="{Binding BeginTime}"
+                    />
+                <Label
+                    Text="結束日期"
+                    />
+                <DatePicker
+                    Format="yyyy-MM-dd"
+                    Date="{Binding LeaveAppFormItem.CompleteDate, StringFormat='{0:yyyy-MM-dd}'}"
+                    />
+                <Label
+                    Text="結束時間"
+                    />
+                <TimePicker
+                    Time="{Binding CompleteTime}"
+                    />
+                <Label
+                    Text="代理人"
+                    />
+                <StackLayout
+                    Orientation="Horizontal"
+                    >
+                    <Label
+                        HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                        Text="{Binding LeaveAppFormItem.AgentName}"
+                        FontSize="20"
+                    />
+                    <Button
+                        Text="選取"
+                        Command="{Binding SelectAgentCommand}"/>
+                </StackLayout>
+                <Label
+                    Text="請假原因"
+                    />
+                <Editor
+                    HeightRequest="200"
+                    Text="{Binding LeaveAppFormItem.LeaveCause}"
+                    />
+            </StackLayout>
+        </ScrollView>
+        <StackLayout
+            Grid.Row="1"
+            Spacing="0"
+            Orientation="Vertical"
+            >
+
+            <!--儲存修改與刪除按鈕-->
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                IsVisible="{Binding IsUpdaeRecordMode}"
+                >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    Text="刪除"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    HeightRequest="50"
+                    Command="{Binding DeleteCommand}"/>
+                <Button
+                    Grid.Column="1"
+                    Text="儲存"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    HeightRequest="50"
+                    Command="{Binding SaveCommand}"/>
+            </Grid>
+
+            <!--新增紀錄使用的按鈕-->
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                IsVisible="{Binding IsCreateRecordMode}"
+                >
+                <Button
+                    Text="新增"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    HeightRequest="50"
+                    Command="{Binding AddCommand}"/>
+            </Grid>
+
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

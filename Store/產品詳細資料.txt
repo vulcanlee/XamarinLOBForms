@@ -1,0 +1,21 @@
+﻿名稱名稱：企業表單
+
+簡短說明:
+
+這是 Xamarin.Forms 跨平台行動開發一日實戰營 企業表單 的實作練習最後成果
+
+完整說明：
+
+這是 Xamarin.Forms 跨平台行動開發一日實戰營 企業表單 的實作練習最後成果
+
+管理者的帳號可以使用 manager0~manager9 共10組
+管理者的帳號之密碼分別為 pwd0~pwd9
+
+一般使用者帳號可以使用 user1~user100
+一般使用者帳號之密碼分別為 pwd1~pwd100
+
+其中 user1~user10 的主管為 manager0
+     user11~user20 的主管為 manager1
+以此規則類推
+
+本教育訓練課程詳細說明，請參考： https://www.accupass.com/event/1801190306501956990910

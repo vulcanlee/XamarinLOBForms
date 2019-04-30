@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="LOBForm.Views.MDPage"
+             MasterBehavior="Popover">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+
+            <ContentPage.Icon>
+                <!--因為每個平台的圖片路徑不同，所以，需要使用 OnPlatform 來指定不同平台的圖片名稱-->
+                <!--每個屬性的 x:TypeArguments 引用型別皆不同，這裡請參考這個連結
+                https://developer.xamarin.com/api/type/Xamarin.Forms.Page/-->
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Default="hamburger.png"
+                            WinPhone="Assets/Images/hamburger.png" />
+            </ContentPage.Icon>
+
+            <Grid></Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+</MasterDetailPage>

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="LOBForm.Views.WorkingLogDetailPage"
+             Title="工作日誌編輯">
+
+    <Grid
+        RowSpacing="0" ColumnSpacing="0"
+        >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="55"/>
+        </Grid.RowDefinitions>
+
+        <ScrollView
+            Grid.Row="0"
+            Margin="10"
+           Orientation="Vertical"
+            >
+            <StackLayout
+                Spacing="0"
+                Orientation="Vertical"
+                >
+                <Label
+                    Text="主題"
+                    />
+                <Entry
+                    Text="{Binding WorkingLogItem.Title}"
+                    />
+                <Label
+                    Text="摘要"
+                    />
+                <Editor
+                    HeightRequest="200"
+                    Text="{Binding WorkingLogItem.Summary}"
+                    />
+                <Label
+                    Text="日期"
+                    />
+                <DatePicker
+                    Format="yyyy-MM-dd"
+                    Date="{Binding WorkingLogItem.LogDate, StringFormat='{0:yyyy-MM-dd}'}"
+                    />
+                <Label
+                    Text="時間長度"
+                    />
+                <Entry
+                    Text="{Binding WorkingLogItem.Hours}"
+                    />
+                <Label
+                    Text="專案名稱"
+                    />
+                <Picker
+                    ItemsSource="{Binding ProjectsSource}"
+                    SelectedItem="{Binding ProjectSelectedItem}"
+                    />
+            </StackLayout>
+        </ScrollView>
+        <StackLayout
+            Grid.Row="1"
+            Spacing="0"
+            Orientation="Vertical"
+            >
+            
+            <!--儲存修改與刪除按鈕-->
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                IsVisible="{Binding IsUpdaeRecordMode}"
+                >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    Text="刪除"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    HeightRequest="50"
+                    Command="{Binding DeleteCommand}"/>
+                <Button
+                    Grid.Column="1"
+                    Text="儲存"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    HeightRequest="50"
+                    Command="{Binding SaveCommand}"/>
+            </Grid>
+            
+            <!--新增紀錄使用的按鈕-->
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                IsVisible="{Binding IsCreateRecordMode}"
+                >
+                <Button
+                    Text="新增"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    HeightRequest="50"
+                    Command="{Binding AddCommand}"/>
+            </Grid>
+
+        </StackLayout>
+    </Grid>
+  
+</ContentPage>

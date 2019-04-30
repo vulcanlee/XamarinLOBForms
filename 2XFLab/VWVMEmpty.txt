@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="LOBForm.Views.PrismContentPage1">
+  
+</ContentPage>
+
+
+
+
+
+
+using Prism.Commands;
+using Prism.Mvvm;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace LOBForm.ViewModels
+{
+	public class PrismContentPage1ViewModel : BindableBase
+	{
+        public PrismContentPage1ViewModel()
+        {
+
+        }
+	}
+}
+
+
+
+ XAML 練習
+
+XF5 建立專案起始畫面與讀取最新的資料清單 ViewModel 練習
+
+
+XF6 建立使用者身分驗證的登入頁面 XAML 練習
+
+XF6 建立使用者身分驗證的登入頁面 ViewModel 練習
+
+
+XF7 建立導航抽屜與關於頁面 XAML 練習
+
+XF7 建立導航抽屜與關於頁面 ViewModel 練習
+
+
+XF8 建立企業緊急電話清單頁面 XAML 練習
+
+XF8 建立企業緊急電話清單頁面 ViewModel 練習
+
+
+XF9 建立工作日誌CRUD應用頁面 XAML 練習
+
+XF9 建立工作日誌CRUD應用頁面 ViewModel 練習
+
+
+XF10 建立請假單CRUD應用頁面 XAML 練習
+
+XF10 建立請假單CRUD應用頁面 ViewModel 練習
+
+
+XF11 建立請假單主管審核應用頁面 XAML 練習
+
+XF11 建立請假單主管審核應用頁面 ViewModel 練習
+
+
+ XAML 練習
+
+ ViewModel 練習
+
+
+ XAML 練習
+
+ ViewModel 練習
+
+
+ XAML 練習
+
+ ViewModel 練習
+
+
+ XAML 練習
+
+ ViewModel 練習
+

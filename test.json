@@ -1,0 +1,19 @@
+{
+    "success": true,
+    "tokenFail": false,
+    "message": "",
+    "payload": {
+        "accessToken": "eyJ0e...C78s",
+        "myUser": {
+            "myUserId": 2,
+            "departmentName": "部門0",
+            "name": "使用者1",
+            "employeeID": "user1",
+            "password": "pwd1",
+            "managerId": 1,
+            "isManager": false,
+            "createdAt": null,
+            "updatedAt": null
+        }
+    }
+}

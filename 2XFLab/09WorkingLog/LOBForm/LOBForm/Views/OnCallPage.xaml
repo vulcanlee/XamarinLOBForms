@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="LOBForm.Views.OnCallPage"
+             Title="各部門緊急電話清單"
+             x:Name="ThisPage"
+             >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="更新"
+            Command="{Binding DoRefreshCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid
+        RowSpacing="0" ColumnSpacing="0"
+        >
+        <ListView
+            ItemsSource="{Binding OnCallPhoneList}"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsRefreshing}"
+            RefreshCommand="{Binding DoRefreshCommand}"
+            HasUnevenRows="True"
+            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid
+                            RowSpacing="0" ColumnSpacing="0"
+                            >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <BoxView
+                                Grid.RowSpan="2" Grid.ColumnSpan="2"
+                                Color="White"/>
+
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Margin="5,0"
+                                Text="{Binding Title}"
+                                FontSize="20"
+                                TextColor="DarkGray"
+                                />
+                            <Label
+                                Grid.Row="1" Grid.Column="0"
+                                Margin="5,0"
+                                Text="{Binding PhoneNumber}"
+                                TextColor="DarkGray"
+                                FontSize="16"/>
+                            <Grid
+                                RowSpacing="0" ColumnSpacing="0"
+                                Grid.Row="0" Grid.Column="1"
+                                Grid.RowSpan="2"
+                                >
+                                <BoxView
+                                    Margin="0,0,5,0"
+                                    Color="ForestGreen"/>
+                                <Label
+                                    HorizontalOptions="Center" VerticalOptions="Center"
+                                    Margin="5,5"
+                                    Text="打電話"
+                                    TextColor="White"
+                                    FontSize="24">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding BindingContext.CallPhoneCommand, Source={x:Reference ThisPage}}"
+                                            CommandParameter="{Binding .}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                            </Grid>
+
+                            <BoxView
+                                Grid.RowSpan="2" Grid.ColumnSpan="2"
+                                Margin="5,0"
+                                HorizontalOptions="Fill" VerticalOptions="End"
+                                HeightRequest="2"
+                                Color="Orange"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

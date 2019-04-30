@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b82c003c99e344c0afeedcaa6fcde2bd" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.LOBLeaveAppForms" Width="1.5" PointX="3.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOBLeaveCategories" Width="1.5" PointX="1.875" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOBMyUsers" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOBOnCallPhones" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOBProjects" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOBWorkingLogs" Width="1.5" PointX="8" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_dbo_LOBLeaveAppForms_dbo_LOBMyUsers_Owner_MyUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_LOBWorkingLogs_dbo_LOBMyUsers_Owner_MyUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_LOBWorkingLogs_dbo_LOBProjects_Project_ProjectId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

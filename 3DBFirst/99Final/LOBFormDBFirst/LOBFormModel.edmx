@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LOBLeaveAppForms">
+          <Key>
+            <PropertyRef Name="LeaveAppFormId" />
+          </Key>
+          <Property Name="LeaveAppFormId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormDate" Type="datetime" Nullable="false" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="CompleteDate" Type="datetime" Nullable="false" />
+          <Property Name="AgentName" Type="nvarchar(max)" />
+          <Property Name="LeaveCause" Type="nvarchar(max)" />
+          <Property Name="FormsStatus" Type="nvarchar(max)" />
+          <Property Name="ApproveResult" Type="nvarchar(max)" />
+          <Property Name="Owner_MyUserId" Type="int" />
+          <Property Name="Hours" Type="float" Nullable="false" />
+          <Property Name="AgentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOBLeaveCategories">
+          <Key>
+            <PropertyRef Name="LeaveCategoryId" />
+          </Key>
+          <Property Name="LeaveCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SortingOrder" Type="int" Nullable="false" />
+          <Property Name="LeaveCategoryName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LOBMyUsers">
+          <Key>
+            <PropertyRef Name="MyUserId" />
+          </Key>
+          <Property Name="MyUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="EmployeeID" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="IsManager" Type="bit" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetimeoffset" Precision="7" />
+          <Property Name="UpdatedAt" Type="datetimeoffset" Precision="7" />
+          <Property Name="ManagerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOBOnCallPhones">
+          <Key>
+            <PropertyRef Name="OnCallPhoneId" />
+          </Key>
+          <Property Name="OnCallPhoneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SortingOrder" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LOBProjects">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LOBWorkingLogs">
+          <Key>
+            <PropertyRef Name="WorkingLogId" />
+          </Key>
+          <Property Name="WorkingLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogDate" Type="datetime" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Summary" Type="nvarchar(max)" />
+          <Property Name="Owner_MyUserId" Type="int" />
+          <Property Name="Project_ProjectId" Type="int" />
+          <Property Name="Hours" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_LOBLeaveAppForms_dbo_LOBMyUsers_Owner_MyUserId">
+          <End Role="LOBMyUsers" Type="Self.LOBMyUsers" Multiplicity="0..1" />
+          <End Role="LOBLeaveAppForms" Type="Self.LOBLeaveAppForms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOBMyUsers">
+              <PropertyRef Name="MyUserId" />
+            </Principal>
+            <Dependent Role="LOBLeaveAppForms">
+              <PropertyRef Name="Owner_MyUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_LOBWorkingLogs_dbo_LOBMyUsers_Owner_MyUserId">
+          <End Role="LOBMyUsers" Type="Self.LOBMyUsers" Multiplicity="0..1" />
+          <End Role="LOBWorkingLogs" Type="Self.LOBWorkingLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOBMyUsers">
+              <PropertyRef Name="MyUserId" />
+            </Principal>
+            <Dependent Role="LOBWorkingLogs">
+              <PropertyRef Name="Owner_MyUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_LOBWorkingLogs_dbo_LOBProjects_Project_ProjectId">
+          <End Role="LOBProjects" Type="Self.LOBProjects" Multiplicity="0..1" />
+          <End Role="LOBWorkingLogs" Type="Self.LOBWorkingLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOBProjects">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="LOBWorkingLogs">
+              <PropertyRef Name="Project_ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="LOBLeaveAppForms" EntityType="Self.LOBLeaveAppForms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOBLeaveCategories" EntityType="Self.LOBLeaveCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOBMyUsers" EntityType="Self.LOBMyUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOBOnCallPhones" EntityType="Self.LOBOnCallPhones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOBProjects" EntityType="Self.LOBProjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOBWorkingLogs" EntityType="Self.LOBWorkingLogs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_LOBLeaveAppForms_dbo_LOBMyUsers_Owner_MyUserId" Association="Self.FK_dbo_LOBLeaveAppForms_dbo_LOBMyUsers_Owner_MyUserId">
+            <End Role="LOBMyUsers" EntitySet="LOBMyUsers" />
+            <End Role="LOBLeaveAppForms" EntitySet="LOBLeaveAppForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_LOBWorkingLogs_dbo_LOBMyUsers_Owner_MyUserId" Association="Self.FK_dbo_LOBWorkingLogs_dbo_LOBMyUsers_Owner_MyUserId">
+            <End Role="LOBMyUsers" EntitySet="LOBMyUsers" />
+            <End Role="LOBWorkingLogs" EntitySet="LOBWorkingLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_LOBWorkingLogs_dbo_LOBProjects_Project_ProjectId" Association="Self.FK_dbo_LOBWorkingLogs_dbo_LOBProjects_Project_ProjectId">
+            <End Role="LOBProjects" EntitySet="LOBProjects" />
+            <End Role="LOBWorkingLogs" EntitySet="LOBWorkingLogs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LOBLeaveAppForms">
+          <Key>
+            <PropertyRef Name="LeaveAppFormId" />
+          </Key>
+          <Property Name="LeaveAppFormId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CompleteDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AgentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LeaveCause" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormsStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveResult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Owner_MyUserId" Type="Int32" />
+          <Property Name="Hours" Type="Double" Nullable="false" />
+          <Property Name="AgentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LOBMyUsers" Relationship="Self.FK_dbo_LOBLeaveAppForms_dbo_LOBMyUsers_Owner_MyUserId" FromRole="LOBLeaveAppForms" ToRole="LOBMyUsers" />
+        </EntityType>
+        <EntityType Name="LOBLeaveCategories">
+          <Key>
+            <PropertyRef Name="LeaveCategoryId" />
+          </Key>
+          <Property Name="LeaveCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SortingOrder" Type="Int32" Nullable="false" />
+          <Property Name="LeaveCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LOBMyUsers">
+          <Key>
+            <PropertyRef Name="MyUserId" />
+          </Key>
+          <Property Name="MyUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsManager" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTimeOffset" Precision="7" />
+          <Property Name="UpdatedAt" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ManagerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LOBLeaveAppForms" Relationship="Self.FK_dbo_LOBLeaveAppForms_dbo_LOBMyUsers_Owner_MyUserId" FromRole="LOBMyUsers" ToRole="LOBLeaveAppForms" />
+          <NavigationProperty Name="LOBWorkingLogs" Relationship="Self.FK_dbo_LOBWorkingLogs_dbo_LOBMyUsers_Owner_MyUserId" FromRole="LOBMyUsers" ToRole="LOBWorkingLogs" />
+        </EntityType>
+        <EntityType Name="LOBOnCallPhones">
+          <Key>
+            <PropertyRef Name="OnCallPhoneId" />
+          </Key>
+          <Property Name="OnCallPhoneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SortingOrder" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LOBProjects">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LOBWorkingLogs" Relationship="Self.FK_dbo_LOBWorkingLogs_dbo_LOBProjects_Project_ProjectId" FromRole="LOBProjects" ToRole="LOBWorkingLogs" />
+        </EntityType>
+        <EntityType Name="LOBWorkingLogs">
+          <Key>
+            <PropertyRef Name="WorkingLogId" />
+          </Key>
+          <Property Name="WorkingLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Owner_MyUserId" Type="Int32" />
+          <Property Name="Project_ProjectId" Type="Int32" />
+          <Property Name="Hours" Type="Double" Nullable="false" />
+          <NavigationProperty Name="LOBMyUsers" Relationship="Self.FK_dbo_LOBWorkingLogs_dbo_LOBMyUsers_Owner_MyUserId" FromRole="LOBWorkingLogs" ToRole="LOBMyUsers" />
+          <NavigationProperty Name="LOBProjects" Relationship="Self.FK_dbo_LOBWorkingLogs_dbo_LOBProjects_Project_ProjectId" FromRole="LOBWorkingLogs" ToRole="LOBProjects" />
+        </EntityType>
+        <Association Name="FK_dbo_LOBLeaveAppForms_dbo_LOBMyUsers_Owner_MyUserId">
+          <End Role="LOBMyUsers" Type="Self.LOBMyUsers" Multiplicity="0..1" />
+          <End Role="LOBLeaveAppForms" Type="Self.LOBLeaveAppForms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOBMyUsers">
+              <PropertyRef Name="MyUserId" />
+            </Principal>
+            <Dependent Role="LOBLeaveAppForms">
+              <PropertyRef Name="Owner_MyUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_LOBWorkingLogs_dbo_LOBMyUsers_Owner_MyUserId">
+          <End Role="LOBMyUsers" Type="Self.LOBMyUsers" Multiplicity="0..1" />
+          <End Role="LOBWorkingLogs" Type="Self.LOBWorkingLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOBMyUsers">
+              <PropertyRef Name="MyUserId" />
+            </Principal>
+            <Dependent Role="LOBWorkingLogs">
+              <PropertyRef Name="Owner_MyUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_LOBWorkingLogs_dbo_LOBProjects_Project_ProjectId">
+          <End Role="LOBProjects" Type="Self.LOBProjects" Multiplicity="0..1" />
+          <End Role="LOBWorkingLogs" Type="Self.LOBWorkingLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOBProjects">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="LOBWorkingLogs">
+              <PropertyRef Name="Project_ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LOBFormEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LOBLeaveAppForms" EntityType="Self.LOBLeaveAppForms" />
+          <EntitySet Name="LOBLeaveCategories" EntityType="Self.LOBLeaveCategories" />
+          <EntitySet Name="LOBMyUsers" EntityType="Self.LOBMyUsers" />
+          <EntitySet Name="LOBOnCallPhones" EntityType="Self.LOBOnCallPhones" />
+          <EntitySet Name="LOBProjects" EntityType="Self.LOBProjects" />
+          <EntitySet Name="LOBWorkingLogs" EntityType="Self.LOBWorkingLogs" />
+          <AssociationSet Name="FK_dbo_LOBLeaveAppForms_dbo_LOBMyUsers_Owner_MyUserId" Association="Self.FK_dbo_LOBLeaveAppForms_dbo_LOBMyUsers_Owner_MyUserId">
+            <End Role="LOBMyUsers" EntitySet="LOBMyUsers" />
+            <End Role="LOBLeaveAppForms" EntitySet="LOBLeaveAppForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_LOBWorkingLogs_dbo_LOBMyUsers_Owner_MyUserId" Association="Self.FK_dbo_LOBWorkingLogs_dbo_LOBMyUsers_Owner_MyUserId">
+            <End Role="LOBMyUsers" EntitySet="LOBMyUsers" />
+            <End Role="LOBWorkingLogs" EntitySet="LOBWorkingLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_LOBWorkingLogs_dbo_LOBProjects_Project_ProjectId" Association="Self.FK_dbo_LOBWorkingLogs_dbo_LOBProjects_Project_ProjectId">
+            <End Role="LOBProjects" EntitySet="LOBProjects" />
+            <End Role="LOBWorkingLogs" EntitySet="LOBWorkingLogs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="LOBFormEntities">
+          <EntitySetMapping Name="LOBLeaveAppForms">
+            <EntityTypeMapping TypeName="Model.LOBLeaveAppForms">
+              <MappingFragment StoreEntitySet="LOBLeaveAppForms">
+                <ScalarProperty Name="LeaveAppFormId" ColumnName="LeaveAppFormId" />
+                <ScalarProperty Name="FormDate" ColumnName="FormDate" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+                <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+                <ScalarProperty Name="LeaveCause" ColumnName="LeaveCause" />
+                <ScalarProperty Name="FormsStatus" ColumnName="FormsStatus" />
+                <ScalarProperty Name="ApproveResult" ColumnName="ApproveResult" />
+                <ScalarProperty Name="Owner_MyUserId" ColumnName="Owner_MyUserId" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOBLeaveCategories">
+            <EntityTypeMapping TypeName="Model.LOBLeaveCategories">
+              <MappingFragment StoreEntitySet="LOBLeaveCategories">
+                <ScalarProperty Name="LeaveCategoryId" ColumnName="LeaveCategoryId" />
+                <ScalarProperty Name="SortingOrder" ColumnName="SortingOrder" />
+                <ScalarProperty Name="LeaveCategoryName" ColumnName="LeaveCategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOBMyUsers">
+            <EntityTypeMapping TypeName="Model.LOBMyUsers">
+              <MappingFragment StoreEntitySet="LOBMyUsers">
+                <ScalarProperty Name="MyUserId" ColumnName="MyUserId" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsManager" ColumnName="IsManager" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOBOnCallPhones">
+            <EntityTypeMapping TypeName="Model.LOBOnCallPhones">
+              <MappingFragment StoreEntitySet="LOBOnCallPhones">
+                <ScalarProperty Name="OnCallPhoneId" ColumnName="OnCallPhoneId" />
+                <ScalarProperty Name="SortingOrder" ColumnName="SortingOrder" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOBProjects">
+            <EntityTypeMapping TypeName="Model.LOBProjects">
+              <MappingFragment StoreEntitySet="LOBProjects">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOBWorkingLogs">
+            <EntityTypeMapping TypeName="Model.LOBWorkingLogs">
+              <MappingFragment StoreEntitySet="LOBWorkingLogs">
+                <ScalarProperty Name="WorkingLogId" ColumnName="WorkingLogId" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Owner_MyUserId" ColumnName="Owner_MyUserId" />
+                <ScalarProperty Name="Project_ProjectId" ColumnName="Project_ProjectId" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

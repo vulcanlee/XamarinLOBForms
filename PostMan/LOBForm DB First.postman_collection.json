@@ -1,0 +1,778 @@
+{
+	"info": {
+		"name": "LOBForm DB First",
+		"_postman_id": "86a194e8-3593-4be0-8b9b-9f5f66d93c4e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "本機",
+			"description": null,
+			"item": [
+				{
+					"name": "請假單",
+					"description": null,
+					"item": [
+						{
+							"name": "本機查詢請假單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/LeaveAppForm",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"LeaveAppForm"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢特定主管要審核的所有請假單紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"manager0\",\n    \"mode\": \"manager\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/LeaveAppFormByUser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"LeaveAppFormByUser"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢特定主管要審核的所有請假單紀錄(有JwtAuth的存取權杖檢查)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyMSIsImV4cCI6MTUxNzM4MzMzMi4wLCJyb2xlIjpbXSwibWFuYWdlciI6ZmFsc2V9.7QRjrobykaO2LBoOPI4YQbARESzYPFEKFfEZV8DvVSY"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"manager0\",\n    \"mode\": \"manager\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/LeaveAppFormByUserJwtAuth",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"LeaveAppFormByUserJwtAuth"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢特定使用者的所有請假單紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"user1\",\n    \"mode\": \"user\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/LeaveAppFormByUser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"LeaveAppFormByUser"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢請假代理人清單紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"DepartmentName\": \"部門5\",\n    \"Name\": \"\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/QueryAgent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"QueryAgent"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機修改特定使用者的假單紀錄",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"LeaveAppFormId\": 911,\n            \"Owner\": {\n                \"MyUserId\": 222,\n                \"DepartmentName\": \"部門0\",\n                \"Name\": \"使用者1\",\n                \"EmployeeID\": \"user1\",\n                \"Password\": \"pwd1\",\n                \"ManagerId\": 221,\n                \"IsManager\": false,\n                \"CreatedAt\": null,\n                \"UpdatedAt\": null\n            },\n            \"FormDate\": \"2018-01-30T09:33:50.98\",\n            \"Category\": \"XX\",\n            \"BeginDate\": \"2018-01-30T09:33:50.98\",\n            \"CompleteDate\": \"2018-01-30T09:33:50.98\",\n            \"Hours\": 0,\n            \"AgentName\": \"Vulcan\",\n            \"AgentId\": 0,\n            \"LeaveCause\": \"#################\",\n            \"FormsStatus\": \"已經送出\",\n            \"ApproveResult\": \"尚未審核\"\n        }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/LeaveAppForm",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"LeaveAppForm"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機新增特定使用者的假單紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"Owner\": {\n            \"MyUserId\": 222,\n            \"DepartmentName\": \"部門0\",\n            \"Name\": \"使用者1\",\n            \"EmployeeID\": \"user1\",\n            \"Password\": \"pwd1\",\n            \"ManagerId\": 221,\n            \"IsManager\": false,\n            \"CreatedAt\": null,\n            \"UpdatedAt\": null\n        },\n            \"leaveAppFormId\": 612,\n            \"formDate\": \"2018-01-30T09:33:50.98Z\",\n            \"category\": \"XX\",\n            \"beginDate\": \"2018-01-30T09:33:50.98Z\",\n            \"completeDate\": \"2018-01-30T09:33:50.98Z\",\n            \"totalHours\": \"08:00:00\",\n            \"agentName\": \"Vulcan\",\n            \"leaveCause\": \"???????????????????\",\n            \"formsStatus\": \"@@\",\n            \"approveResult\": \"Wait\"\n        }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/LeaveAppForm",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"LeaveAppForm"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機刪除特定使用者的假單紀錄",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"owner\": {\n                \"myUserId\": 1544,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1543,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"leaveAppFormId\": 613,\n            \"formDate\": \"2018-01-29T17:33:50.98Z\",\n            \"category\": \"XX\",\n            \"beginDate\": \"2018-01-29T17:33:50.98Z\",\n            \"completeDate\": \"2018-01-29T17:33:50.98Z\",\n            \"totalHours\": \"08:00:00\",\n            \"agentName\": \"Vulcan\",\n            \"leaveCause\": \"??\",\n            \"formsStatus\": \"已經送出\",\n            \"approveResult\": \"尚未審核~~~~~~~~\"\n        }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/LeaveAppForm/911",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"LeaveAppForm",
+										"911"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機請假單查詢特定一筆紀錄",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/LeaveAppForm?id=911",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"LeaveAppForm"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "911",
+											"equals": true
+										}
+									]
+								},
+								"description": null
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "系統管理使用",
+					"description": null,
+					"item": [
+						{
+							"name": "本機資料庫清空與進行初始化",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/dbreset",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"dbreset"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "其他",
+					"description": null,
+					"item": [
+						{
+							"name": "本機專案清單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/Project",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"Project"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機請假類別清單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/LeaveCategory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"LeaveCategory"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機On-Call清單所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/OnCallPhone",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"OnCallPhone"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機使用者部門",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/Department",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"Department"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢使用者請假代理人",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"DepartmentName\": \"\",\n     \"Name\": \"\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/QueryAgent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"QueryAgent"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "使用者",
+					"description": null,
+					"item": [
+						{
+							"name": "本機使用者認證 Authorization (一般使用者)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic dXNlcjE6cHdkMQ=="
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/Login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機使用者認證 Authorization (管理者)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic bWFuYWdlcjE6cHdkMQ=="
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/Login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機使用者認證 Post (一般使用者)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"user1\",\n    \"password\": \"pwd1\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/Login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機使用者認證 Post (管理者)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"account\": \"manager1\",\n    \"password\": \"pwd1\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/Login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"Login"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "工作日誌",
+					"description": null,
+					"item": [
+						{
+							"name": "本機查詢工作日誌所有紀錄",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/WorkingLog",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"WorkingLog"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢特定使用者的所有工作日誌紀錄",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/WorkingLog/ByUserID?userID=user1&mode=user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"WorkingLog",
+										"ByUserID"
+									],
+									"query": [
+										{
+											"key": "userID",
+											"value": "user1",
+											"equals": true
+										},
+										{
+											"key": "mode",
+											"value": "user",
+											"equals": true
+										}
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機查詢特定工作日誌紀錄",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/WorkingLog/903",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"WorkingLog",
+										"903"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機刪除特定使用者的工作日誌紀錄",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"project\": {\n                \"projectId\": 391,\n                \"projectName\": \"專案0\"\n            },\n            \"workingLogId\": 301,\n            \"owner\": {\n                \"myUserId\": 1544,\n                \"departmentName\": \"部門0\",\n                \"name\": \"使用者1\",\n                \"employeeID\": \"user1\",\n                \"password\": \"pwd1\",\n                \"managerId\": 1543,\n                \"isManager\": false,\n                \"createdAt\": null,\n                \"updatedAt\": null\n            },\n            \"logDate\": \"2018-01-30T01:33:27.187Z\",\n            \"totalHours\": \"03:00:00\",\n            \"title\": \"與客戶開會XXXX\",\n            \"summary\": \"討論上線相關準備工作XXXX\"\n        }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/WorkingLog/903",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"WorkingLog",
+										"903"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機修改特定使用者的工作日誌紀錄",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"WorkingLogId\": 903,\n            \"Owner\": {\n                \"MyUserId\": 222,\n                \"DepartmentName\": \"部門0\",\n                \"Name\": \"使用者1\",\n                \"EmployeeID\": \"user1\",\n                \"Password\": \"pwd1\",\n                \"ManagerId\": 221,\n                \"IsManager\": false,\n                \"CreatedAt\": null,\n                \"UpdatedAt\": null\n            },\n            \"LogDate\": \"2018-01-30T09:33:27.187\",\n            \"Hours\": 0,\n            \"Project\": {\n                \"ProjectId\": 91,\n                \"ProjectName\": \"專案0\"\n            },\n            \"Title\": \"???????????????????\",\n            \"Summary\": \"討論上線相關準備工作XXXX\"\n        }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/WorkingLog",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"WorkingLog"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "本機新增特定使用者的工作日誌紀錄",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"project\": {\n            \"ProjectId\": 91,\n            \"ProjectName\": \"專案0\"\n        },\n            \"Owner\": {\n            \"MyUserId\": 222,\n            \"DepartmentName\": \"部門0\",\n            \"Name\": \"使用者1\",\n            \"EmployeeID\": \"user1\",\n            \"Password\": \"pwd1\",\n            \"ManagerId\": 221,\n            \"IsManager\": false,\n            \"CreatedAt\": null,\n            \"UpdatedAt\": null\n        },\n            \"logDate\": \"2018-01-30T09:33:27.187Z\",\n            \"totalHours\": \"03:00:00\",\n            \"title\": \"@@@@@@@@@@@@@@@@\",\n            \"summary\": \"討論上線相關準備工作XXXX\"\n        }"
+								},
+								"url": {
+									"raw": "http://localhost:50490/api/WorkingLog",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "50490",
+									"path": [
+										"api",
+										"WorkingLog"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}

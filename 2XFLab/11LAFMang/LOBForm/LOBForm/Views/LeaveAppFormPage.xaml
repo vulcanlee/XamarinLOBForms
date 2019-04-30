@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:behavior="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="LOBForm.Views.LeaveAppFormPage"
+             Title="請假單"
+             x:Name="ThisPage"
+             >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="新增"
+            Command="{Binding AddCommand}">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="add.png"
+                            iOS="add.png"
+                            WinPhone="Assets/Images/add.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="更新"
+            Command="{Binding DoRefreshCommand}">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="tbrefresh.png"
+                            iOS="tbrefresh.png"
+                            WinPhone="Assets/Images/tbrefresh.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid
+        RowSpacing="0" ColumnSpacing="0"
+        >
+        <ListView
+            ItemsSource="{Binding LeaveAppFormList}"
+            SelectedItem="{Binding LeaveAppFormSelectedItem}"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsRefreshing}"
+            RefreshCommand="{Binding DoRefreshCommand}"
+            HasUnevenRows="True"
+            SeparatorVisibility="None"
+            >
+            <ListView.Behaviors>
+                <behavior:EventToCommandBehavior
+                    EventName="ItemTapped"
+                    Command="{Binding ItemTappedCommand}"/>
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid
+                            RowSpacing="0" ColumnSpacing="0"
+                            >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <BoxView
+                                Grid.RowSpan="2" Grid.ColumnSpan="2"
+                                Color="White"/>
+
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Margin="5,0"
+                                Text="{Binding Category}"
+                                FontSize="20"
+                                TextColor="Black"
+                                />
+
+                            <StackLayout
+                                Grid.Row="1" Grid.Column="0"
+                                Spacing="0"
+                                Orientation="Horizontal"
+                                >
+                                <Label
+                                    Margin="5,0,0,0"
+                                    Text="{Binding BeginDate, StringFormat='{0:yyyy-MM-dd hh:mm} ~ '}"
+                                    FontSize="16"
+                                    TextColor="DarkGray"
+                                    />
+                                <Label
+                                    Margin="0,0,5,0"
+                                    Text="{Binding CompleteDate, StringFormat='{0:yyyy-MM-dd hh:mm}'}"
+                                    FontSize="16"
+                                    TextColor="DarkGray"
+                                    />
+                            </StackLayout>
+
+                            <Label
+                                Grid.Row="0" Grid.Column="1"
+                                Margin="5,0"
+                                Text="{Binding FormsStatus}"
+                                FontSize="20"
+                                TextColor="Brown"
+                                />
+
+                            <Label
+                                Grid.Row="1" Grid.Column="1"
+                                Margin="5,0"
+                                Text="{Binding ApproveResult}"
+                                FontSize="20"
+                                TextColor="Red"
+                                />
+
+                            <BoxView
+                                Grid.RowSpan="2" Grid.ColumnSpan="2"
+                                Margin="5,0"
+                                HorizontalOptions="Fill" VerticalOptions="End"
+                                HeightRequest="2"
+                                Color="Orange"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</ContentPage>
